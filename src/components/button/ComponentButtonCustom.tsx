@@ -12,11 +12,11 @@ import Styles from './styles';
 interface Props {
   label: string;
   onPress: Function;
-  isSecondary: boolean;
-  isOutLine: boolean;
+  isSecondary?: boolean;
+  isOutLine?: boolean;
   labelStyles: StyleProp<TextStyle>;
-  buttonStyles: StyleProp<ViewStyle>;
-  buttonProps: TouchableOpacityProps;
+  buttonStyles?: StyleProp<ViewStyle>;
+  buttonProps?: TouchableOpacityProps;
   primaryColor: string;
   secondaryColor: string;
   disableColor: string;
@@ -25,8 +25,8 @@ interface Props {
   borderSecondaryColor: string;
   borderDisableColor: string;
   borderOutlineColor: string;
-  enable: boolean;
-  borderRadius: number;
+  enable?: boolean;
+  borderRadius?: number;
   textPrimaryColor: string;
   textSecondaryColor: string;
   textOutlineColor: string;
