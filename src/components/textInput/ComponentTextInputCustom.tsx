@@ -27,7 +27,10 @@ interface State {
   label?: string;
 }
 
-export default class MyTextInputCustom extends React.Component<Props, State> {
+export default class ComponentTextInputCustom extends React.Component<
+  Props,
+  State
+> {
   static defaultProps = {};
 
   render() {

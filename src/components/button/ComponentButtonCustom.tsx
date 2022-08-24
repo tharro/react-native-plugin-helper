@@ -33,7 +33,7 @@ interface Props {
   textDisableColor: string;
 }
 
-export default class MyButtonCustom extends React.Component<Props> {
+export default class ComponentButtonCustom extends React.Component<Props> {
   static defaultProps = {
     isSecondary: false,
     isOutLine: false,

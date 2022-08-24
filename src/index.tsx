@@ -1,5 +1,5 @@
 import MyPluginHelper from './plugin_helper';
-import MyButtonCustom from './components/button/MyButtonCustom';
-import MyTextInputCustom from './components/textInput/MyTextInputCustom';
+import ComponentButtonCustom from './components/button/ComponentButtonCustom';
+import ComponentTextInputCustom from './components/textInput/ComponentTextInputCustom';
 
-export { MyPluginHelper, MyButtonCustom, MyTextInputCustom };
+export { MyPluginHelper, ComponentButtonCustom, ComponentTextInputCustom };
