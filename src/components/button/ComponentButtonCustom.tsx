@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleProp,
   Text,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   ViewStyle,
+  View,
 } from 'react-native';
 import Styles from './styles';
 
@@ -31,6 +32,11 @@ interface Props {
   textSecondaryColor: string;
   textOutlineColor: string;
   textDisableColor: string;
+  width?: number | string;
+  height: number | string;
+  isWidthDynamic?: boolean;
+  childrenLeft?: Component;
+  childrenRight?: Component;
 }
 
 export default class ComponentButtonCustom extends React.Component<Props> {
@@ -39,38 +45,46 @@ export default class ComponentButtonCustom extends React.Component<Props> {
     isOutLine: false,
     enable: true,
     borderRadius: 5,
+    isWidthDynamic: false,
   };
 
   render() {
     return (
-      <TouchableOpacity
-        {...this.props.buttonProps}
-        onPress={() => {
-          if (this.props.enable) {
-            this.props.onPress();
-          }
-        }}
-        style={[
-          Styles.container,
-          {
-            backgroundColor: this._checkBackgroundColor(),
-            borderColor: this._checkBorderColor(),
-            borderRadius: this.props.borderRadius,
-          },
-          this.props.buttonStyles,
-        ]}
+      <View
+        style={{ flexDirection: this.props.isWidthDynamic ? 'row' : 'column' }}
       >
-        <Text
+        <TouchableOpacity
+          {...this.props.buttonProps}
+          onPress={() => {
+            if (this.props.enable) {
+              this.props.onPress();
+            }
+          }}
           style={[
-            this.props.labelStyles,
+            Styles.container,
             {
-              color: this._checkTextColor(),
+              backgroundColor: this._checkBackgroundColor(),
+              borderColor: this._checkBorderColor(),
+              borderRadius: this.props.borderRadius,
+              height: this.props.height,
             },
+            this.props.buttonStyles,
           ]}
         >
-          {this.props.label}
-        </Text>
-      </TouchableOpacity>
+          {this.props.childrenLeft}
+          <Text
+            style={[
+              this.props.labelStyles,
+              {
+                color: this._checkTextColor(),
+              },
+            ]}
+          >
+            {this.props.label}
+          </Text>
+          {this.props.childrenRight}
+        </TouchableOpacity>
+      </View>
     );
   }
 
