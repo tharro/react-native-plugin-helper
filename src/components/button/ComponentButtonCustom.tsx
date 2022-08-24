@@ -67,6 +67,7 @@ export default class ComponentButtonCustom extends React.Component<Props> {
               borderColor: this._checkBorderColor(),
               borderRadius: this.props.borderRadius,
               height: this.props.height,
+              width: this.props.width,
             },
             this.props.buttonStyles,
           ]}
