@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleProp,
   Text,
@@ -35,8 +35,8 @@ interface Props {
   width?: number | string;
   height: number | string;
   isWidthDynamic?: boolean;
-  childrenLeft?: Component;
-  childrenRight?: Component;
+  childrenLeft?: React.ReactElement;
+  childrenRight?: React.ReactElement;
 }
 
 export default class ComponentButtonCustom extends React.Component<Props> {
