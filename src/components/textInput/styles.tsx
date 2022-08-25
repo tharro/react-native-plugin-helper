@@ -7,6 +7,7 @@ const Styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    borderWidth: 1,
   },
   flex: {
     flex: 1,

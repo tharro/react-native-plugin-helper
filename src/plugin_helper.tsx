@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { PasswordValidType } from './components/textInput/ComponentTextInputCustom';
 
 class MyPluginHelper {
   static isValidateEmail = (email: string) => {
@@ -16,6 +17,20 @@ class MyPluginHelper {
     const date = new Date(expiredToken * 1000);
     var minutes: number = moment(moment.now()).diff(date, 'minutes');
     return minutes > 5;
+  }
+
+  static isValidPassword(
+    password: string,
+    passwordValidType: PasswordValidType = PasswordValidType.atLeast8Characters
+  ) {
+    switch (passwordValidType) {
+      case PasswordValidType.atLeast8Characters:
+        return password.length >= 8;
+      case PasswordValidType.strongPassword:
+        var regexPassword =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.[\]{}()?\-“!@#%&/,><’:;|_~`])\S{8,99}/;
+        return password.match(regexPassword);
+    }
   }
 }
 
