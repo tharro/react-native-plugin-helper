@@ -7,12 +7,13 @@ import {
   TouchableOpacityProps,
   ViewStyle,
   View,
+  FlexStyle,
 } from 'react-native';
 import Styles from './styles';
 
 interface Props {
   label: string;
-  onPress: Function;
+  onPress: () => void;
   isSecondary?: boolean;
   isOutLine?: boolean;
   labelStyles: StyleProp<TextStyle>;
@@ -49,10 +50,12 @@ export default class ComponentButtonCustom extends React.Component<Props> {
   };
 
   render() {
+    var flexDirection: FlexStyle['flexDirection'] = 'column';
+    if (this.props.isWidthDynamic) {
+      flexDirection = 'row';
+    }
     return (
-      <View
-        style={{ flexDirection: this.props.isWidthDynamic ? 'row' : 'column' }}
-      >
+      <View style={{ flexDirection: flexDirection }}>
         <TouchableOpacity
           {...this.props.buttonProps}
           onPress={() => {
