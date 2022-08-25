@@ -4,7 +4,7 @@ import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
 } from './components/textInput/ComponentTextInputCustom';
-import { h, w } from './extensions';
+import { h, w, HideKeyboard } from './extensions';
 import SvgUri from 'react-native-svg-uri';
 
 export {
@@ -16,4 +16,5 @@ export {
   w,
   ValidType,
   PasswordValidType,
+  HideKeyboard,
 };
