@@ -29,20 +29,22 @@ interface Props {
   onPressSuffixIcon?: () => void;
   widthIcon?: number;
   heightIcon?: number;
-  value: string;
-  onChangeText: (text: string) => void;
+  onChangeText?: (text: string) => void;
   validType?: ValidType;
   errorStyles?: StyleProp<TextStyle>;
   borderColor: string;
   borderFocusColor: string;
   borderErrorColor: string;
   passwordValidType?: PasswordValidType;
+  onRef: (ref: TextInput | null) => void;
+  initValue?: string;
 }
 
 interface State {
   secureTextEntry?: boolean;
   textError?: string;
   hasFocus?: boolean;
+  value?: string;
 }
 
 export enum ValidType {
@@ -75,6 +77,7 @@ export default class ComponentTextInputCustom extends React.Component<
       secureTextEntry: this.props.validType === ValidType.password,
       textError: '',
       hasFocus: false,
+      value: this.props.initValue,
     };
   }
 
@@ -125,6 +128,9 @@ export default class ComponentTextInputCustom extends React.Component<
       default:
         break;
     }
+    this.setState({
+      value: text,
+    });
   };
 
   render() {
@@ -136,7 +142,6 @@ export default class ComponentTextInputCustom extends React.Component<
       widthIcon,
       heightIcon,
       inputProps,
-      value,
       onChangeText,
       suffixIcon,
       onPressSuffixIcon,
@@ -146,8 +151,9 @@ export default class ComponentTextInputCustom extends React.Component<
       errorStyles,
       spaceBetweenLabelAndTextInput,
       spaceBetweenErrorAndTextInput,
+      onRef,
     } = this.props;
-    const { textError } = this.state;
+    const { textError, value } = this.state;
     return (
       <View style={Styles.container}>
         {label ? <Text style={labelStyles}>{label}</Text> : null}
@@ -166,6 +172,9 @@ export default class ComponentTextInputCustom extends React.Component<
           ) : null}
           <View style={Styles.flex}>
             <TextInput
+              ref={(r) => {
+                onRef(r);
+              }}
               onFocus={() => {
                 this.setState({
                   hasFocus: true,
@@ -180,7 +189,9 @@ export default class ComponentTextInputCustom extends React.Component<
               secureTextEntry={this.state.secureTextEntry}
               onChangeText={(text) => {
                 this._checkValid(text);
-                onChangeText(text);
+                if (onChangeText) {
+                  onChangeText(text);
+                }
               }}
               {...inputProps}
             />
