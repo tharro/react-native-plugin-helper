@@ -38,6 +38,7 @@ interface Props {
   passwordValidType?: PasswordValidType;
   onRef?: (ref: TextInput | null) => void;
   value?: string;
+  textError?: string;
 }
 
 interface State {
@@ -68,6 +69,7 @@ export default class ComponentTextInputCustom extends React.Component<
   static defaultProps = {
     secureTextEntry: false,
     validType: ValidType.none,
+    textError: '',
   };
 
   constructor(props: any) {
@@ -217,8 +219,14 @@ export default class ComponentTextInputCustom extends React.Component<
             </TouchableOpacity>
           ) : null}
         </View>
-        {h(spaceBetweenErrorAndTextInput ?? 5)}
-        <Text style={errorStyles}>{textError}</Text>
+        {this.props.textError !== '' || textError !== '' ? (
+          <>
+            {h(spaceBetweenErrorAndTextInput ?? 5)}
+            <Text style={errorStyles}>
+              {this.props.textError !== '' ? this.props.textError : textError}
+            </Text>
+          </>
+        ) : null}
       </View>
     );
   }
