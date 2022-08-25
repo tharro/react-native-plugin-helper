@@ -29,22 +29,21 @@ interface Props {
   onPressSuffixIcon?: () => void;
   widthIcon?: number;
   heightIcon?: number;
-  onChangeText?: (text: string) => void;
+  onChangeText: (text: string) => void;
   validType?: ValidType;
   errorStyles?: StyleProp<TextStyle>;
   borderColor: string;
   borderFocusColor: string;
   borderErrorColor: string;
   passwordValidType?: PasswordValidType;
-  onRef: (ref: TextInput | null) => void;
-  initValue?: string;
+  onRef?: (ref: TextInput | null) => void;
+  value?: string;
 }
 
 interface State {
   secureTextEntry?: boolean;
   textError?: string;
   hasFocus?: boolean;
-  value?: string;
 }
 
 export enum ValidType {
@@ -77,7 +76,6 @@ export default class ComponentTextInputCustom extends React.Component<
       secureTextEntry: this.props.validType === ValidType.password,
       textError: '',
       hasFocus: false,
-      value: this.props.initValue,
     };
   }
 
@@ -128,9 +126,6 @@ export default class ComponentTextInputCustom extends React.Component<
       default:
         break;
     }
-    this.setState({
-      value: text,
-    });
   };
 
   render() {
@@ -152,8 +147,9 @@ export default class ComponentTextInputCustom extends React.Component<
       spaceBetweenLabelAndTextInput,
       spaceBetweenErrorAndTextInput,
       onRef,
+      value,
     } = this.props;
-    const { textError, value } = this.state;
+    const { textError } = this.state;
     return (
       <View style={Styles.container}>
         {label ? <Text style={labelStyles}>{label}</Text> : null}
@@ -173,7 +169,9 @@ export default class ComponentTextInputCustom extends React.Component<
           <View style={Styles.flex}>
             <TextInput
               ref={(r) => {
-                onRef(r);
+                if (onRef) {
+                  onRef(r);
+                }
               }}
               onFocus={() => {
                 this.setState({
@@ -189,9 +187,7 @@ export default class ComponentTextInputCustom extends React.Component<
               secureTextEntry={this.state.secureTextEntry}
               onChangeText={(text) => {
                 this._checkValid(text);
-                if (onChangeText) {
-                  onChangeText(text);
-                }
+                onChangeText(text);
               }}
               {...inputProps}
             />
