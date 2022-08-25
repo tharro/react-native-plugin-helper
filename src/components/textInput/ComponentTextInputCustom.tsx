@@ -26,11 +26,11 @@ interface Props {
   suffixIcon?: ImageURISource;
   eyeOnIcon?: ImageURISource;
   eyeOffIcon?: ImageURISource;
-  onPressSuffixIcon?: Function;
+  onPressSuffixIcon?: () => void;
   widthIcon?: number;
   heightIcon?: number;
   value: string;
-  onChangeText: Function;
+  onChangeText: (text: string) => void;
   validType?: ValidType;
   errorStyles?: StyleProp<TextStyle>;
   borderColor: string;
