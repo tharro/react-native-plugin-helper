@@ -13,7 +13,7 @@ import {
 import Styles from './styles';
 import SvgUri from 'react-native-svg-uri';
 import { MyPluginHelper } from 'react-native-plugin-helper';
-import { h } from 'src/extensions';
+import { h } from '../../extensions';
 
 interface Props {
   label?: string;
