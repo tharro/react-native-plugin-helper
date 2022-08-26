@@ -12,9 +12,8 @@ import {
 } from 'react-native';
 import Styles from './styles';
 import SvgUri from 'react-native-svg-uri';
-import { h } from '../../extensions';
-import { isValidateEmail, isValidPassword } from 'lib/typescript';
-import MessageMultipleLanguage from 'src/messages_mandatory';
+import { h, isValidateEmail, isValidPassword } from '../../extensions';
+import MessageMultipleLanguage from '../../messages_mandatory';
 
 interface Props {
   label?: string;
