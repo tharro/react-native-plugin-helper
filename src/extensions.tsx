@@ -6,6 +6,7 @@ import { PasswordValidType } from './components/textInput/ComponentTextInputCust
 export const w = (a: number) => {
   return <View style={{ width: a }} />;
 };
+
 export const h = (a: number) => {
   return <View style={{ height: a }} />;
 };

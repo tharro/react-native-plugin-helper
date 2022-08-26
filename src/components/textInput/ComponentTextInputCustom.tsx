@@ -12,8 +12,9 @@ import {
 } from 'react-native';
 import Styles from './styles';
 import SvgUri from 'react-native-svg-uri';
-import { MyPluginHelper } from 'react-native-plugin-helper';
 import { h } from '../../extensions';
+import { isValidateEmail, isValidPassword } from 'lib/typescript';
+import MessageMultipleLanguage from 'src/messages_mandatory';
 
 interface Props {
   label?: string;
@@ -93,9 +94,9 @@ export default class ComponentTextInputCustom extends React.Component<
         }
         break;
       case ValidType.email:
-        if (!MyPluginHelper.isValidateEmail(text)) {
+        if (!isValidateEmail(text)) {
           this.setState({
-            textError: 'key_invalid_email',
+            textError: MessageMultipleLanguage.invalidEmail,
           });
         } else {
           this.setState({
@@ -104,9 +105,9 @@ export default class ComponentTextInputCustom extends React.Component<
         }
         break;
       case ValidType.password:
-        if (MyPluginHelper.isValidPassword(text, passwordValidType)) {
+        if (isValidPassword(text, passwordValidType)) {
           this.setState({
-            textError: 'key_invalid_password',
+            textError: MessageMultipleLanguage.weakPassword,
           });
         } else {
           this.setState({
@@ -115,9 +116,9 @@ export default class ComponentTextInputCustom extends React.Component<
         }
         break;
       case ValidType.notEmpty:
-        if (MyPluginHelper.isValidateEmail(text)) {
+        if (isValidateEmail(text)) {
           this.setState({
-            textError: 'key_input_cannot_empty',
+            textError: MessageMultipleLanguage.canNotEmpty,
           });
         } else {
           this.setState({
