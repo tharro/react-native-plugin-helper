@@ -1,4 +1,5 @@
 import ComponentButtonCustom from './components/button/ComponentButtonCustom';
+import ComponentFlatListCustom from './components/flatlist/ComponentFlatListCustom';
 import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
@@ -18,6 +19,7 @@ import { StyleSheet, scale, isTablet } from './scaling';
 export {
   ComponentButtonCustom,
   ComponentTextInputCustom,
+  ComponentFlatListCustom,
   ValidType,
   PasswordValidType,
   h,
