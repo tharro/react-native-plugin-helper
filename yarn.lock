@@ -7947,6 +7947,11 @@ react-native-push-notification@^8.1.1:
   resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz#a41d20c70ea5a7709417e96261b225461f8dc73a"
   integrity sha512-XpBtG/w+a6WXTxu6l1dNYyTiHnbgnvjoc3KxPTxYkaIABRmvuJZkFxqruyGvfCw7ELAlZEAJO+dthdTabCe1XA==
 
+react-native-size-scaling@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-size-scaling/-/react-native-size-scaling-0.4.0.tgz#3ec823b31b49126775b39bdb7ad2967920258661"
+  integrity sha512-dyWjZei/LgpWWemFHZcffq+vS5ZYKligqb5NCp4c7NhX2qxKsksfsdBKLpT+EHB0iwsYnVjuFvQlqQ00nxIrYw==
+
 react-native-smooth-pincode-input@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-smooth-pincode-input/-/react-native-smooth-pincode-input-1.0.9.tgz#4c068ae30aa0cd03bb5bd19c8191c0b4e9b0f8d1"

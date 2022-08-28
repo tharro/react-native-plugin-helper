@@ -4,6 +4,7 @@ import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
 } from './components/textInput/ComponentTextInputCustom';
+
 import {
   h,
   w,
@@ -13,8 +14,6 @@ import {
   isValidToken,
   isValidateEmail,
 } from './extensions';
-
-import { StyleSheet, scale, isTablet } from './scaling';
 
 export {
   ComponentButtonCustom,
@@ -29,7 +28,4 @@ export {
   isValidToken,
   isValidateEmail,
   HideKeyboard,
-  StyleSheet,
-  scale,
-  isTablet,
 };
