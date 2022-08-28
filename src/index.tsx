@@ -13,6 +13,8 @@ import {
   isValidateEmail,
 } from './extensions';
 
+import { StyleSheet } from './scaling';
+
 export {
   ComponentButtonCustom,
   ComponentTextInputCustom,
@@ -25,4 +27,5 @@ export {
   isValidToken,
   isValidateEmail,
   HideKeyboard,
+  StyleSheet,
 };
