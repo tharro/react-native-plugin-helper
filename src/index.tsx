@@ -14,13 +14,7 @@ import {
   isValidToken,
   isValidateEmail,
 } from './extensions';
-import * as SizeScaling from 'react-native-size-scaling';
-import DeviceInfo from 'react-native-device-info';
-import Modal from 'react-native-modal';
-import PushNotification from 'react-native-push-notification';
-import Svg from 'react-native-svg';
-import SvgUri from 'react-native-svg-uri';
-import Toast from 'react-native-toast-message';
+import type ListModel from './models/ListModel';
 
 export {
   ComponentButtonCustom,
@@ -35,11 +29,5 @@ export {
   isValidToken,
   isValidateEmail,
   HideKeyboard,
-  SizeScaling,
-  DeviceInfo,
-  Modal,
-  PushNotification,
-  Svg,
-  SvgUri,
-  Toast,
+  ListModel,
 };

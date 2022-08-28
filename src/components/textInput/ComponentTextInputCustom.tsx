@@ -6,12 +6,10 @@ import {
   ViewStyle,
   TextInput,
   TextInputProps,
-  ImageURISource,
   TouchableOpacity,
   TextStyle,
 } from 'react-native';
 import Styles from './styles';
-import SvgUri from 'react-native-svg-uri';
 import { h, isValidateEmail, isValidPassword } from '../../extensions';
 import MessageMultipleLanguage from '../../messages_mandatory';
 
@@ -22,13 +20,11 @@ interface Props {
   spaceBetweenErrorAndTextInput?: number;
   inputProps: TextInputProps;
   inputStyles: StyleProp<ViewStyle>;
-  prefixIcon?: ImageURISource;
-  suffixIcon?: ImageURISource;
-  eyeOnIcon?: ImageURISource;
-  eyeOffIcon?: ImageURISource;
+  prefixIcon?: React.ReactElement;
+  suffixIcon?: React.ReactElement;
+  eyeOnIcon: React.ReactElement;
+  eyeOffIcon: React.ReactElement;
   onPressSuffixIcon?: () => void;
-  widthIcon?: number;
-  heightIcon?: number;
   onChangeText: (text: string) => void;
   validType?: ValidType;
   errorStyles?: StyleProp<TextStyle>;
@@ -136,8 +132,6 @@ export default class ComponentTextInputCustom extends React.Component<
       labelStyles,
       inputStyles,
       prefixIcon,
-      widthIcon,
-      heightIcon,
       inputProps,
       onChangeText,
       suffixIcon,
@@ -165,9 +159,7 @@ export default class ComponentTextInputCustom extends React.Component<
             inputStyles,
           ]}
         >
-          {prefixIcon ? (
-            <SvgUri source={prefixIcon} width={widthIcon} height={heightIcon} />
-          ) : null}
+          {prefixIcon ? prefixIcon : null}
           <View style={Styles.flex}>
             <TextInput
               ref={(r) => {
@@ -208,14 +200,9 @@ export default class ComponentTextInputCustom extends React.Component<
                 }
               }}
             >
-              <SvgUri
-                source={
-                  suffixIcon ??
-                  (this.state.secureTextEntry ? eyeOnIcon : eyeOffIcon)
-                }
-                width={widthIcon}
-                height={heightIcon}
-              />
+              {suffixIcon ?? this.state.secureTextEntry
+                ? eyeOnIcon
+                : eyeOffIcon}
             </TouchableOpacity>
           ) : null}
         </View>

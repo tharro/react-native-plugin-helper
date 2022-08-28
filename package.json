@@ -149,17 +149,6 @@
     ]
   },
   "dependencies": {
-    "@react-native-community/push-notification-ios": "^1.10.1",
-    "@types/react-native-vector-icons": "^6.4.11",
-    "moment": "^2.29.4",
-    "react-native-device-info": "^10.0.2",
-    "react-native-modal": "^13.0.1",
-    "react-native-push-notification": "^8.1.1",
-    "react-native-size-scaling": "^0.4.0",
-    "react-native-smooth-pincode-input": "^1.0.9",
-    "react-native-svg": "^13.0.0",
-    "react-native-svg-uri": "^1.2.3",
-    "react-native-toast-message": "^2.1.5",
-    "react-native-vector-icons": "^9.2.0"
+    "moment": "^2.29.4"
   }
 }
