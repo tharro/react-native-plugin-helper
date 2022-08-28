@@ -2182,14 +2182,14 @@
   "resolved" "https://registry.npmjs.org/@types/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz"
   "version" "8.1.1"
 
-"@types/react-native@0.68.0":
-  "integrity" "sha512-E+m91xtoX+GRh2MpbIYOanbtXlX76woVgRs6zU7PsJ4ZPFzdsRkpKNTqMZyKgyt7eraZDnJvwFXGXDIW+8NRjA=="
-  "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.68.0.tgz"
-  "version" "0.68.0"
+"@types/react-native@^0.68.3":
+  "integrity" "sha512-IU4dMrbo9Q3erSuZfdZudtqCIXjXund1bOewL3+X4YVHbOCaW2ZgyGQWJCp2Pa2sepjRxlRuk71svu+0uxJokw=="
+  "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.68.3.tgz"
+  "version" "0.68.3"
   dependencies:
-    "@types/react" "*"
+    "@types/react" "^17"
 
-"@types/react@*", "@types/react@~17.0.21":
+"@types/react@^17", "@types/react@~17.0.21":
   "integrity" "sha512-zJ6IYlJ8cYYxiJfUaZOQee4lh99mFihBoqkOSEGV+dFi9leROW6+PgstzQ+w3gWTnUfskALtQPGHK6dYmPj+2A=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-17.0.48.tgz"
   "version" "17.0.48"
