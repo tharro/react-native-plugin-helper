@@ -13,7 +13,7 @@ import {
   isValidateEmail,
 } from './extensions';
 
-import { StyleSheet, scale } from './scaling';
+import { StyleSheet, scale, isTablet } from './scaling';
 
 export {
   ComponentButtonCustom,
@@ -29,4 +29,5 @@ export {
   HideKeyboard,
   StyleSheet,
   scale,
+  isTablet,
 };
