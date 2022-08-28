@@ -15,13 +15,12 @@ import {
   isValidateEmail,
 } from './extensions';
 import * as SizeScaling from 'react-native-size-scaling';
-import * as VectorIcon from 'react-native-vector-icons';
 import DeviceInfo from 'react-native-device-info';
 import Modal from 'react-native-modal';
 import PushNotification from 'react-native-push-notification';
 import Svg from 'react-native-svg';
 import SvgUri from 'react-native-svg-uri';
-import * as ToastMessage from 'react-native-toast-message';
+import Toast from 'react-native-toast-message';
 
 export {
   ComponentButtonCustom,
@@ -37,11 +36,10 @@ export {
   isValidateEmail,
   HideKeyboard,
   SizeScaling,
-  VectorIcon,
   DeviceInfo,
   Modal,
   PushNotification,
   Svg,
   SvgUri,
-  ToastMessage,
+  Toast,
 };
