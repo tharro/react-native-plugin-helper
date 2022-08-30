@@ -15,6 +15,7 @@ import {
   isValidateEmail,
 } from './extensions';
 import type ListModel from './models/ListModel';
+import moment from 'moment';
 
 export {
   ComponentButtonCustom,
@@ -30,4 +31,5 @@ export {
   isValidateEmail,
   HideKeyboard,
   ListModel,
+  moment,
 };
