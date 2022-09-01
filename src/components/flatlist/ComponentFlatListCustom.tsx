@@ -10,7 +10,7 @@ import {
 import { h } from '../../extensions';
 
 interface Props<T> {
-  data: Array<T>;
+  data: T[];
   renderItem: ListRenderItem<T>;
   flatListProps?: FlatListProps<any>;
   onLoadMore?: () => void;
@@ -18,9 +18,8 @@ interface Props<T> {
   itemSeparator?: number;
   isLoadMore?: boolean;
   ActivityIndicator: React.ReactElement | null | undefined;
-  renderListEmpty: React.ReactElement | null | undefined;
   onRefresh?: () => void;
-  refreshColor: Array<string>;
+  refreshColor: string[];
   refreshTintColor: string;
 }
 
@@ -59,7 +58,6 @@ export default class ComponentFlatListCustom<T> extends React.Component<
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         ListFooterComponent={this._renderLoadMoreIndicator()}
-        ListEmptyComponent={this._renderListEmpty()}
         ItemSeparatorComponent={this._itemSeparatorComponent}
         onScrollBeginDrag={this._checkBeginScroll}
         scrollEventThrottle={15}
@@ -113,9 +111,5 @@ export default class ComponentFlatListCustom<T> extends React.Component<
       return null;
     }
     return this.props.ActivityIndicator;
-  };
-
-  _renderListEmpty = () => {
-    return this.props.renderListEmpty;
   };
 }
