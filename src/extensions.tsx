@@ -49,7 +49,7 @@ export const isValidateEmail = (email: string) => {
 };
 
 export const convertUtcToLocalTime = (utc: string) => {
-  return moment.utc(utc).local().format('dd/MM/yyyy HH:mm');
+  return moment.utc(utc).local().format('DD/MM/YYYY HH:mm');
 };
 
 export function isValidToken(expiredToken: number): boolean {
