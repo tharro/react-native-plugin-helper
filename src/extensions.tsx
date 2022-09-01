@@ -10,21 +10,17 @@ import {
 } from 'react-native-responsive-screen';
 
 /* RESPONSIVE UI - START */
-export function wdp(number: number) {
-  return widthPercentageToDP((number / 375) * 100);
-}
+export const wdp = (number: number) =>
+  widthPercentageToDP((number / 375) * 100);
 
-export function hdp(number: number) {
-  return heightPercentageToDP((number / 667) * 100);
-}
+export const hdp = (number: number) =>
+  heightPercentageToDP((number / 667) * 100);
 
-export function lor(component: Component<any, any>) {
-  return listenOrientationChange(component);
-}
+export const lor = (component: Component<any, any>) =>
+  listenOrientationChange(component);
 
-export function rol() {
-  return removeOrientationListener();
-}
+export const rol = () => removeOrientationListener();
+
 /* RESPONSIVE UI - END */
 
 export const w = (a: number) => {
