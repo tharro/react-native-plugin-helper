@@ -13,6 +13,10 @@ import {
   isValidPassword,
   isValidToken,
   isValidateEmail,
+  hdp,
+  lor,
+  rol,
+  wdp,
 } from './extensions';
 import type ListModel from './models/ListModel';
 import moment from 'moment';
@@ -32,4 +36,8 @@ export {
   HideKeyboard,
   ListModel,
   moment,
+  hdp,
+  lor,
+  rol,
+  wdp,
 };

@@ -1,14 +1,38 @@
 import moment from 'moment';
-import React from 'react';
+import React, { Component } from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import { PasswordValidType } from './components/textInput/ComponentTextInputCustom';
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+  listenOrientationChange,
+  removeOrientationListener,
+} from 'react-native-responsive-screen';
+
+/* RESPONSIVE UI - START */
+export function wdp(number: number) {
+  return widthPercentageToDP((number / 375) * 100);
+}
+
+export function hdp(number: number) {
+  return heightPercentageToDP((number / 667) * 100);
+}
+
+export function lor(component: Component<any, any>) {
+  return listenOrientationChange(component);
+}
+
+export function rol() {
+  return removeOrientationListener();
+}
+/* RESPONSIVE UI - END */
 
 export const w = (a: number) => {
-  return <View style={{ width: a }} />;
+  return <View style={{ width: wdp(a) }} />;
 };
 
 export const h = (a: number) => {
-  return <View style={{ height: a }} />;
+  return <View style={{ height: hdp(a) }} />;
 };
 
 export const HideKeyboard = ({
@@ -33,9 +57,8 @@ export const convertUtcToLocalTime = (utc: string) => {
 };
 
 export function isValidToken(expiredToken: number): boolean {
-  const date = new Date(expiredToken * 1000);
-  var minutes: number = moment(moment.now()).diff(date, 'minutes');
-  return minutes > 5;
+  var minutes: number = moment().diff(new Date(expiredToken), 'minutes');
+  return minutes < -5;
 }
 
 export function isValidPassword(
