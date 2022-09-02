@@ -21,6 +21,7 @@ interface Props<T> {
   onRefresh?: () => void;
   refreshColor: string[];
   refreshTintColor: string;
+  refreshing: boolean;
 }
 
 interface State {
@@ -48,7 +49,7 @@ export default class ComponentFlatListCustom<T> extends React.Component<
             <RefreshControl
               colors={this.props.refreshColor}
               tintColor={this.props.refreshTintColor}
-              refreshing={false}
+              refreshing={this.props.refreshing}
               onRefresh={this.props.onRefresh}
             />
           ) : undefined
