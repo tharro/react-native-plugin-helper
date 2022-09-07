@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Styles from './styles';
 import { h, isValidateEmail, isValidPassword } from '../../extensions';
-import MessageMultipleLanguage from 'src/messages_mandatory';
+import MessageMultipleLanguage from '../../messages_mandatory';
 
 interface Props {
   label?: string;
