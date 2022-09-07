@@ -40,53 +40,55 @@ interface Props extends ClassAttributes<any> {
   childrenRight?: React.ReactElement;
 }
 
-const checkBackgroundColor = (props: Props) => {
-  if (!props.enable) {
-    return props.disableColor;
-  } else {
-    if (props.isSecondary) {
-      return props.secondaryColor;
-    }
-    if (props.isOutLine) {
-      return props.outlineColor;
-    }
-  }
-  return props.primaryColor;
-};
-
-const checkBorderColor = (props: Props) => {
-  if (!props.enable) {
-    return props.borderDisableColor;
-  } else {
-    if (props.isSecondary) {
-      return props.borderSecondaryColor;
-    }
-    if (props.isOutLine) {
-      return props.borderOutlineColor;
-    }
-  }
-  return props.borderPrimaryColor;
-};
-
-const checkTextColor = (props: Props) => {
-  if (!props.enable) {
-    return props.textDisableColor;
-  } else {
-    if (props.isSecondary) {
-      return props.textSecondaryColor;
-    }
-    if (props.isOutLine) {
-      return props.textOutlineColor;
-    }
-  }
-  return props.textPrimaryColor;
-};
-
 const ComponentButtonCustom = (props: Props) => {
+  props = Object.assign({}, defaultProps, props);
   var flexDirection: FlexStyle['flexDirection'] = 'column';
   if (props.isWidthDynamic) {
     flexDirection = 'row';
   }
+
+  const checkBackgroundColor = () => {
+    if (!props.enable) {
+      return props.disableColor;
+    } else {
+      if (props.isSecondary) {
+        return props.secondaryColor;
+      }
+      if (props.isOutLine) {
+        return props.outlineColor;
+      }
+    }
+    return props.primaryColor;
+  };
+
+  const checkBorderColor = () => {
+    if (!props.enable) {
+      return props.borderDisableColor;
+    } else {
+      if (props.isSecondary) {
+        return props.borderSecondaryColor;
+      }
+      if (props.isOutLine) {
+        return props.borderOutlineColor;
+      }
+    }
+    return props.borderPrimaryColor;
+  };
+
+  const checkTextColor = () => {
+    if (!props.enable) {
+      return props.textDisableColor;
+    } else {
+      if (props.isSecondary) {
+        return props.textSecondaryColor;
+      }
+      if (props.isOutLine) {
+        return props.textOutlineColor;
+      }
+    }
+    return props.textPrimaryColor;
+  };
+
   return (
     <View style={{ flexDirection: flexDirection }}>
       <TouchableOpacity
@@ -99,8 +101,8 @@ const ComponentButtonCustom = (props: Props) => {
         style={[
           Styles.container,
           {
-            backgroundColor: checkBackgroundColor(props),
-            borderColor: checkBorderColor(props),
+            backgroundColor: checkBackgroundColor(),
+            borderColor: checkBorderColor(),
             borderRadius: props.borderRadius,
             height: props.height,
             width: props.width,
@@ -113,7 +115,7 @@ const ComponentButtonCustom = (props: Props) => {
           style={[
             props.labelStyles,
             {
-              color: checkTextColor(props),
+              color: checkTextColor(),
             },
           ]}
         >
@@ -125,7 +127,7 @@ const ComponentButtonCustom = (props: Props) => {
   );
 };
 
-ComponentButtonCustom.defaultProps = {
+const defaultProps = {
   isSecondary: false,
   isOutLine: false,
   enable: true,
