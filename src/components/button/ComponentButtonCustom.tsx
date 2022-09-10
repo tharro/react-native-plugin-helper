@@ -15,23 +15,19 @@ interface Props extends ClassAttributes<any> {
   label: string;
   onPress: () => void;
   isSecondary?: boolean;
-  isOutLine?: boolean;
   labelStyles: StyleProp<TextStyle>;
   buttonStyles?: StyleProp<ViewStyle>;
   buttonProps?: TouchableOpacityProps;
   primaryColor: string;
   secondaryColor: string;
   disableColor: string;
-  outlineColor: string;
   borderPrimaryColor: string;
   borderSecondaryColor: string;
   borderDisableColor: string;
-  borderOutlineColor: string;
   enable?: boolean;
   borderRadius?: number;
   textPrimaryColor: string;
   textSecondaryColor: string;
-  textOutlineColor: string;
   textDisableColor: string;
   width?: number | string;
   height: number | string;
@@ -54,9 +50,6 @@ const ComponentButtonCustom = (props: Props) => {
       if (props.isSecondary) {
         return props.secondaryColor;
       }
-      if (props.isOutLine) {
-        return props.outlineColor;
-      }
     }
     return props.primaryColor;
   };
@@ -68,9 +61,6 @@ const ComponentButtonCustom = (props: Props) => {
       if (props.isSecondary) {
         return props.borderSecondaryColor;
       }
-      if (props.isOutLine) {
-        return props.borderOutlineColor;
-      }
     }
     return props.borderPrimaryColor;
   };
@@ -81,9 +71,6 @@ const ComponentButtonCustom = (props: Props) => {
     } else {
       if (props.isSecondary) {
         return props.textSecondaryColor;
-      }
-      if (props.isOutLine) {
-        return props.textOutlineColor;
       }
     }
     return props.textPrimaryColor;
@@ -129,7 +116,6 @@ const ComponentButtonCustom = (props: Props) => {
 
 const defaultProps = {
   isSecondary: false,
-  isOutLine: false,
   enable: true,
   borderRadius: 5,
   isWidthDynamic: false,
