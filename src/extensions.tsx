@@ -10,11 +10,15 @@ import {
 } from 'react-native-responsive-screen';
 
 /* RESPONSIVE UI - START */
-export const wdp = (number: number) =>
-  widthPercentageToDP((number / 375) * 100);
+export const wdp = (number: number | string) =>
+  typeof number === 'string'
+    ? widthPercentageToDP(number)
+    : widthPercentageToDP((number / 375) * 100);
 
 export const hdp = (number: number) =>
-  heightPercentageToDP((number / 667) * 100);
+  typeof number === 'string'
+    ? heightPercentageToDP(number)
+    : heightPercentageToDP((number / 667) * 100);
 
 export const lor = (component: Component<any, any>) =>
   listenOrientationChange(component);
