@@ -52,8 +52,11 @@ export const isValidateEmail = (email: string) => {
   return email.match(p);
 };
 
-export const convertUtcToLocalTime = (utc: string) => {
-  return moment.utc(utc).local().format('DD/MM/YYYY HH:mm');
+export const convertUtcToLocalTime = (
+  utc: string,
+  format: string = 'DD/MM/YYYY HH:mm'
+) => {
+  return moment.utc(utc).local().format(format);
 };
 
 export function isValidToken(expiredToken: number): boolean {
