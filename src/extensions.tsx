@@ -15,7 +15,7 @@ export const wdp = (number: number | string) =>
     ? widthPercentageToDP(number)
     : widthPercentageToDP((number / 375) * 100);
 
-export const hdp = (number: number) =>
+export const hdp = (number: number | string) =>
   typeof number === 'string'
     ? heightPercentageToDP(number)
     : heightPercentageToDP((number / 667) * 100);
