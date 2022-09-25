@@ -56,7 +56,7 @@ export const convertUtcToLocalTime = (
   utc: string,
   format: string = 'DD/MM/YYYY HH:mm'
 ) => {
-  return moment.utc(utc).local().format(format);
+  return moment.utc(new Date(utc)).local().format(format);
 };
 
 export function isValidToken(expiredToken: number): boolean {
