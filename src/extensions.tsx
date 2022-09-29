@@ -13,12 +13,12 @@ import {
 export const wdp = (number: number | string) =>
   typeof number === 'string'
     ? widthPercentageToDP(number)
-    : widthPercentageToDP((number * 0.75 / 375) * 100); //convert px to dp. 1dp = 0.75px
+    : widthPercentageToDP((number / 375) * 100);
 
 export const hdp = (number: number | string) =>
   typeof number === 'string'
     ? heightPercentageToDP(number)
-    : heightPercentageToDP((number * 0.75 / 667) * 100);
+    : heightPercentageToDP((number / 667) * 100);
 
 export const lor = (component: Component<any, any>) =>
   listenOrientationChange(component);
