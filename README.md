@@ -1,5 +1,5 @@
 # react-native-plugin-helper
-Plugin for RN
+Plugin for React native
 ## Installation
 
 ```sh
@@ -9,11 +9,11 @@ npm install react-native-plugin-helper
 ## Usage
 
 ```js
-import { multiply } from "react-native-plugin-helper";
+import { isValidateEmail } from "react-native-plugin-helper";
 
 // ...
 
-const result = await multiply(3, 7);
+const isValid = isValidateEmail('example@email.com');
 ```
 
 ## Contributing
