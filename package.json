@@ -1,6 +1,6 @@
 {
   "name": "react-native-plugin-helper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Plugin helper for React native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
