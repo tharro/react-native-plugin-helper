@@ -1,6 +1,7 @@
 import ComponentButtonCustom from './components/button/ComponentButtonCustom';
 import ComponentFlatListCustom from './components/flatlist/ComponentFlatListCustom';
 import ScrollPicker from './components/picker/ScrollPicker';
+import SwipeableItem from './components/picker/SwipeableItem';
 import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
@@ -27,6 +28,7 @@ export {
   ComponentTextInputCustom,
   ComponentFlatListCustom,
   ScrollPicker,
+  SwipeableItem,
   ValidType,
   PasswordValidType,
   h,
