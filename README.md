@@ -3,7 +3,7 @@ Plugin for React native
 ## Installation
 
 ```sh
-npm install react-native-plugin-helper
+npm install react-native-plugin-helper@ba6c5ae2575ef1301805f87c61e8fa2536b7a9c1
 ```
 
 ## Usage
