@@ -19,7 +19,7 @@ interface Props {
   spaceBetweenLabelAndTextInput?: number;
   spaceBetweenErrorAndTextInput?: number;
   inputProps: TextInputProps;
-  inputStyles: StyleProp<ViewStyle>;
+  inputStyles?: StyleProp<ViewStyle> | undefined;
   prefixIcon?: React.ReactElement;
   suffixIcon?: React.ReactElement;
   eyeOnIcon: React.ReactElement;
@@ -32,6 +32,8 @@ interface Props {
   borderFocusColor: string;
   borderErrorColor: string;
   passwordValidType?: PasswordValidType;
+  passWordError?: string | undefined;
+  customRegexPassword?: () => boolean | undefined,
   onRef?: (ref: TextInput | null) => void;
   value?: string;
   textError?: string;
@@ -50,6 +52,7 @@ export enum ValidType {
 export enum PasswordValidType {
   atLeast8Characters,
   strongPassword,
+  custom,
 }
 
 const defaultProps = {
@@ -66,7 +69,7 @@ const ComponentTextInputCustom = (props: Props) => {
   const [hasFocus, setHasFocus] = useState<boolean>(false);
 
   const checkValid = (text: string) => {
-    const { validType, passwordValidType } = props;
+    const { validType, passwordValidType, passWordError, customRegexPassword } = props;
     switch (validType) {
       case ValidType.none:
         if (textError !== '') {
@@ -81,14 +84,14 @@ const ComponentTextInputCustom = (props: Props) => {
         }
         break;
       case ValidType.password:
-        if (isValidPassword(text, passwordValidType)) {
-          setTextError(MessageMultipleLanguage.weakPassword);
+        if (!isValidPassword(text, passwordValidType, customRegexPassword)) {
+          setTextError(passWordError ?? MessageMultipleLanguage.weakPassword);
         } else {
           setTextError('');
         }
         break;
       case ValidType.notEmpty:
-        if (isValidateEmail(text)) {
+        if (text.length == 0) {
           setTextError(MessageMultipleLanguage.canNotEmpty);
         } else {
           setTextError('');
@@ -139,10 +142,10 @@ const ComponentTextInputCustom = (props: Props) => {
       <View
         style={[
           Styles.row,
+          inputStyles,
           {
             borderColor: checkFocusBorder(),
           },
-          inputStyles,
         ]}
       >
         {prefixIcon ? prefixIcon : null}

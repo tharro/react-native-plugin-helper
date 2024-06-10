@@ -66,14 +66,19 @@ export function isValidToken(expiredToken: number): boolean {
 
 export function isValidPassword(
   password: string,
-  passwordValidType: PasswordValidType = PasswordValidType.atLeast8Characters
+  passwordValidType: PasswordValidType = PasswordValidType.atLeast8Characters,
+  customRegexPassword?: () => boolean | undefined,
 ) {
   switch (passwordValidType) {
+    case PasswordValidType.custom:
+      return customRegexPassword!();
     case PasswordValidType.atLeast8Characters:
       return password.length >= 8;
     case PasswordValidType.strongPassword:
       var regexPassword =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.[\]{}()?\-“!@#%&/,><’:;|_~`])\S{8,99}/;
       return password.match(regexPassword);
+    default:
+      return true;
   }
 }
