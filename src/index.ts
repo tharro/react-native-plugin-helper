@@ -1,6 +1,5 @@
 import ComponentButtonCustom from './components/button/ComponentButtonCustom';
 import ComponentFlatListCustom from './components/flatlist/ComponentFlatListCustom';
-import ScrollPicker from './components/picker/ScrollPicker';
 import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
@@ -20,14 +19,11 @@ import {
 } from './extensions';
 import type ListModel from './models/ListModel';
 import moment from 'moment';
-import SwipeableItem from './components/picker/SwipeableItem';
 
 export {
   ComponentButtonCustom,
   ComponentTextInputCustom,
   ComponentFlatListCustom,
-  ScrollPicker,
-  SwipeableItem,
   ValidType,
   PasswordValidType,
   h,
@@ -44,5 +40,3 @@ export {
   rol,
   wdp,
 };
-
-export * from './components/picker/SwipeableItem';
