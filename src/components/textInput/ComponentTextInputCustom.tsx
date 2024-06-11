@@ -37,6 +37,7 @@ interface Props {
   value?: string;
   textError?: string;
   onRef?: (ref: TextInput | null) => void;
+  onValid?: (isValid: boolean) => void | undefined;
 }
 
 export enum ValidType {
@@ -69,34 +70,60 @@ const ComponentTextInputCustom = (props: Props) => {
   const [hasFocus, setHasFocus] = useState<boolean>(false);
 
   const checkValid = (text: string) => {
-    const { validType, passwordValidType, passWordError, customRegexPassword } =
-      props;
+    const {
+      validType,
+      passwordValidType,
+      passWordError,
+      customRegexPassword,
+      onValid,
+    } = props;
 
     switch (validType) {
       case ValidType.none:
         if (textError !== '') {
           setTextError('');
         }
+        if (onValid) {
+          onValid(true);
+        }
         break;
       case ValidType.email:
         if (!isValidateEmail(text)) {
           setTextError(MessageMultipleLanguage.invalidEmail);
+          if (onValid) {
+            onValid(false);
+          }
         } else {
           setTextError('');
+          if (onValid) {
+            onValid(true);
+          }
         }
         break;
       case ValidType.password:
         if (!isValidPassword(text, passwordValidType, customRegexPassword)) {
           setTextError(passWordError ?? MessageMultipleLanguage.weakPassword);
+          if (onValid) {
+            onValid(false);
+          }
         } else {
           setTextError('');
+          if (onValid) {
+            onValid(true);
+          }
         }
         break;
       case ValidType.notEmpty:
         if (text.length == 0) {
           setTextError(MessageMultipleLanguage.canNotEmpty);
+          if (onValid) {
+            onValid(false);
+          }
         } else {
           setTextError('');
+          if (onValid) {
+            onValid(true);
+          }
         }
         break;
       default:
