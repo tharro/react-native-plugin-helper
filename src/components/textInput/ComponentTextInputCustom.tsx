@@ -38,6 +38,7 @@ interface Props {
   textError?: string;
   onRef?: (ref: TextInput | null) => void;
   onValid?: (isValid: boolean) => void | undefined;
+  extraLabel?: React.ReactElement | undefined;
 }
 
 export enum ValidType {
@@ -163,10 +164,16 @@ const ComponentTextInputCustom = (props: Props) => {
     spaceBetweenErrorAndTextInput,
     onRef,
     value,
+    extraLabel,
   } = props;
   return (
     <View style={Styles.container}>
-      {label ? <Text style={labelStyles}>{label}</Text> : null}
+      {label ? (
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={labelStyles}>{label}</Text>
+          {extraLabel}
+        </View>
+      ) : null}
       {h(spaceBetweenLabelAndTextInput ?? 5)}
       <View
         style={[
