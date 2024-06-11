@@ -33,10 +33,10 @@ interface Props {
   borderErrorColor: string;
   passwordValidType?: PasswordValidType;
   passWordError?: string | undefined;
-  customRegexPassword?: () => boolean | undefined,
-  onRef?: (ref: TextInput | null) => void;
+  customRegexPassword?: () => boolean | undefined;
   value?: string;
   textError?: string;
+  ref?: React.LegacyRef<TextInput> | undefined;
 }
 
 export enum ValidType {
@@ -69,7 +69,9 @@ const ComponentTextInputCustom = (props: Props) => {
   const [hasFocus, setHasFocus] = useState<boolean>(false);
 
   const checkValid = (text: string) => {
-    const { validType, passwordValidType, passWordError, customRegexPassword } = props;
+    const { validType, passwordValidType, passWordError, customRegexPassword } =
+      props;
+
     switch (validType) {
       case ValidType.none:
         if (textError !== '') {
@@ -132,7 +134,7 @@ const ComponentTextInputCustom = (props: Props) => {
     errorStyles,
     spaceBetweenLabelAndTextInput,
     spaceBetweenErrorAndTextInput,
-    onRef,
+    ref,
     value,
   } = props;
   return (
@@ -151,11 +153,7 @@ const ComponentTextInputCustom = (props: Props) => {
         {prefixIcon ? prefixIcon : null}
         <View style={Styles.flex}>
           <TextInput
-            ref={(r) => {
-              if (onRef) {
-                onRef(r);
-              }
-            }}
+            ref={ref}
             onFocus={() => {
               setHasFocus(true);
             }}
