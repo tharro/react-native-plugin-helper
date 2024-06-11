@@ -36,7 +36,7 @@ interface Props {
   customRegexPassword?: () => boolean | undefined;
   value?: string;
   textError?: string;
-  ref?: React.LegacyRef<TextInput> | undefined;
+  ref?: React.RefObject<TextInput> | undefined;
 }
 
 export enum ValidType {
