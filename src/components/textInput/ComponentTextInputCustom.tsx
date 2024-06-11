@@ -39,6 +39,7 @@ interface Props {
   onRef?: (ref: TextInput | null) => void;
   onValid?: (isValid: boolean) => void | undefined;
   extraLabel?: React.ReactElement | undefined;
+  showError?: boolean | undefined;
 }
 
 export enum ValidType {
@@ -165,6 +166,7 @@ const ComponentTextInputCustom = (props: Props) => {
     onRef,
     value,
     extraLabel,
+    showError = true,
   } = props;
   return (
     <View style={Styles.container}>
@@ -221,7 +223,7 @@ const ComponentTextInputCustom = (props: Props) => {
           </TouchableOpacity>
         ) : null}
       </View>
-      {props.textError !== '' || textError !== '' ? (
+      {props.textError !== '' || (textError !== '' && showError) ? (
         <>
           {h(spaceBetweenErrorAndTextInput ?? 5)}
           <Text style={errorStyles}>
