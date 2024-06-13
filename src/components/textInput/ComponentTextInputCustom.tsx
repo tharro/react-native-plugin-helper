@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { LegacyRef, useState } from 'react';
 import {
   View,
   Text,
@@ -36,7 +36,7 @@ interface Props {
   customRegexPassword?: () => boolean | undefined;
   value?: string;
   textError?: string;
-  onRef?: (ref: TextInput | null) => void;
+  ref?: LegacyRef<TextInput> | undefined;
   onValid?: (isValid: boolean) => void | undefined;
   extraLabel?: React.ReactElement | undefined;
   showError?: boolean | undefined;
@@ -163,7 +163,7 @@ const ComponentTextInputCustom = (props: Props) => {
     errorStyles,
     spaceBetweenLabelAndTextInput,
     spaceBetweenErrorAndTextInput,
-    onRef,
+    ref,
     value,
     extraLabel,
     showError = true,
@@ -189,11 +189,7 @@ const ComponentTextInputCustom = (props: Props) => {
         {prefixIcon ? prefixIcon : null}
         <View style={Styles.flex}>
           <TextInput
-            ref={(r) => {
-              if (onRef) {
-                onRef(r);
-              }
-            }}
+            ref={ref}
             onFocus={() => {
               setHasFocus(true);
             }}
