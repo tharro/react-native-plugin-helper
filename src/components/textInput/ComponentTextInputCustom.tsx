@@ -36,7 +36,7 @@ interface Props {
   customRegexPassword?: () => boolean | undefined;
   value?: string;
   textError?: string;
-  ref?: React.RefObject<TextInput> | undefined;
+  onRef?: (ref: TextInput | null) => void;
   onValid?: (isValid: boolean) => void | undefined;
   extraLabel?: React.ReactElement | undefined;
   showError?: boolean | undefined;
@@ -163,7 +163,7 @@ const ComponentTextInputCustom = (props: Props) => {
     errorStyles,
     spaceBetweenLabelAndTextInput,
     spaceBetweenErrorAndTextInput,
-    ref,
+    onRef,
     value,
     extraLabel,
     showError = true,
@@ -189,7 +189,11 @@ const ComponentTextInputCustom = (props: Props) => {
         {prefixIcon ? prefixIcon : null}
         <View style={Styles.flex}>
           <TextInput
-            ref={ref}
+            ref={(r) => {
+              if (onRef) {
+                onRef(r);
+              }
+            }}
             onFocus={() => {
               setHasFocus(true);
             }}
