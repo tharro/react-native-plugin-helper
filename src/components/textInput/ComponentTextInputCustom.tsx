@@ -1,4 +1,4 @@
-import React, { LegacyRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -36,7 +36,7 @@ interface Props {
   customRegexPassword?: () => boolean | undefined;
   value?: string;
   textError?: string;
-  ref?: LegacyRef<TextInput> | undefined;
+  ref?: React.RefObject<TextInput> | undefined;
   onValid?: (isValid: boolean) => void | undefined;
   extraLabel?: React.ReactElement | undefined;
   showError?: boolean | undefined;
