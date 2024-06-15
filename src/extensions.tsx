@@ -67,11 +67,11 @@ export function isValidToken(expiredToken: number): boolean {
 export function isValidPassword(
   password: string,
   passwordValidType: PasswordValidType = PasswordValidType.atLeast8Characters,
-  customRegexPassword?: () => boolean | undefined,
+  customRegexPassword?: (password: string) => boolean | undefined
 ) {
   switch (passwordValidType) {
     case PasswordValidType.custom:
-      return customRegexPassword!();
+      return customRegexPassword!(password);
     case PasswordValidType.atLeast8Characters:
       return password.length >= 8;
     case PasswordValidType.strongPassword:

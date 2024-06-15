@@ -33,7 +33,7 @@ interface Props {
   borderErrorColor: string;
   passwordValidType?: PasswordValidType;
   passWordError?: string | undefined;
-  customRegexPassword?: () => boolean | undefined;
+  customRegexPassword?: (password: string) => boolean | undefined;
   value?: string;
   textError?: string;
   onRef?: (ref: TextInput | null) => void;
