@@ -77,7 +77,7 @@ export function isValidPassword(
     case PasswordValidType.strongPassword:
       var regexPassword =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.[\]{}()?\-“!@#%&/,><’:;|_~`])\S{8,99}/;
-      return password.match(regexPassword);
+      return regexPassword.test(password);
     default:
       return true;
   }
