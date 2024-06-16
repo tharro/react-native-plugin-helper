@@ -46,10 +46,9 @@ export const HideKeyboard = ({
 );
 
 export const isValidateEmail = (email: string) => {
-  var p: RegExp = new RegExp(
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  );
-  return email.match(p);
+  var p: RegExp =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return p.test(email);
 };
 
 export const convertUtcToLocalTime = (
@@ -75,7 +74,7 @@ export function isValidPassword(
     case PasswordValidType.atLeast8Characters:
       return password.length >= 8;
     case PasswordValidType.strongPassword:
-      var regexPassword =
+      var regexPassword: RegExp =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.[\]{}()?\-“!@#%&/,><’:;|_~`])\S{8,99}/;
       return regexPassword.test(password);
     default:
