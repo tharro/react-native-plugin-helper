@@ -219,7 +219,7 @@ const ComponentTextInputCustom = (props: Props) => {
               }
             }}
           >
-            {suffixIcon ?? secureTextEntry ? eyeOnIcon : eyeOffIcon}
+            {suffixIcon ?? (secureTextEntry ? eyeOnIcon : eyeOffIcon)}
           </TouchableOpacity>
         ) : null}
       </View>
