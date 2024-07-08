@@ -96,7 +96,7 @@ export function convertTimeToHourOrDay(
   format: string = 'dd/mm/yyyy hh:mm:ss'
 ) {
   try {
-    var date = moment(dateTime);
+    var date = moment(dateTime, format);
     const dateNow = moment();
     const day = dateNow.diff(date, 'days');
     if (day === 0) {
