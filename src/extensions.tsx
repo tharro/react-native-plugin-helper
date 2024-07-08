@@ -53,7 +53,7 @@ export const isValidateEmail = (email: string) => {
 
 export const convertUtcToLocalTime = (
   utc: string,
-  format: string = 'DD/MM/YYYY HH:mm'
+  format: string = 'dd/mm/yyyy hh:mm'
 ) => {
   return moment.utc(new Date(utc)).local().format(format);
 };
@@ -93,10 +93,10 @@ export function isValidPassword(
 /// Output: 2 hours
 export function convertTimeToHourOrDay(
   dateTime: string,
-  format: string = 'dd/MM/yyyy HH:mm:ss'
+  format: string = 'dd/mm/yyyy hh:mm:ss'
 ) {
   try {
-    var date = moment(dateTime).format(format);
+    var date = moment(dateTime);
     const dateNow = moment();
     const day = dateNow.diff(date, 'days');
     if (day === 0) {
