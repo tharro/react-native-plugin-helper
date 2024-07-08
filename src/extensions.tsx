@@ -81,3 +81,43 @@ export function isValidPassword(
       return true;
   }
 }
+
+/// Calculate the time between today's time and the set time.
+///
+/// Example
+/// ```
+/// DateTime now = DateTime.now(); // ~> 2023-09-09 07:00:00
+/// String dateTime = '2023-09-09 09:00:00'
+/// Strong formatTime = MyPluginHelper.convertTimeToHourOrDay(dateTime);
+/// ```
+/// Output: 2 hours
+export function convertTimeToHourOrDay(
+  dateTime: string,
+  format: string = 'dd/MM/yyyy HH:mm:ss'
+) {
+  try {
+    var date = moment(dateTime).format(format);
+    const dateNow = moment();
+    const day = dateNow.diff(date, 'days');
+    if (day === 0) {
+      const hours = dateNow.diff(date, 'hours');
+      if (hours === 0) {
+        const minutes = dateNow.diff(date, 'minutes');
+        if (minutes === 0) {
+          const sec = dateNow.diff(date, 'seconds');
+          return `${sec} second${sec > 1 ? 's' : ''}`;
+        } else {
+          return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+        }
+      } else {
+        return `${hours} hour${hours > 1 ? 's' : ''}`;
+      }
+    }
+    if (day > 7) {
+      return moment(date).format(format);
+    }
+    return `${day} day${day > 1 ? 's' : ''}`;
+  } catch (e) {
+    return '-:--';
+  }
+}
