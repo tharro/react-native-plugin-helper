@@ -59,8 +59,8 @@ export const convertUtcToLocalTime = (
 };
 
 export function isValidToken(expiredToken: number): boolean {
-  var minutes: number = moment().diff(new Date(expiredToken), 'minutes');
-  return minutes < -5;
+  var minutes: number = moment(expiredToken).diff(moment(), 'minutes');
+  return minutes > 5;
 }
 
 export function isValidPassword(
