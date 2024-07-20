@@ -2,7 +2,7 @@ interface ListModel<T> {
   count?: number;
   next?: string;
   previous?: string;
-  results?: T;
+  results?: T[];
 }
 
 export default ListModel;
