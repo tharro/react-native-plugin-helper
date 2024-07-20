@@ -1,12 +1,12 @@
 interface ListModel<T> {
   /// Total row of the list on the database.
-  count: number;
+  count?: number | null;
 
   /// A URL to get more data from the server.
   next?: string | null;
 
   /// List data with custom model.
-  results: T[];
+  results?: T[] | null;
 
   /// Add parameters when searching or filtering.
   params?: { [key: string]: any } | null;
