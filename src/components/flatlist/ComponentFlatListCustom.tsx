@@ -11,7 +11,7 @@ import {
 import { h } from '../../extensions';
 import ListModel from 'src/models/ListModel';
 import Styles from './styles';
-import RefreshingControl from '../refreshingControl/RefreshingControl';
+import RefreshingControl from '../refreshingControl/RefreshingControlCustom';
 
 interface Props<T> {
   data: ListModel<T>;

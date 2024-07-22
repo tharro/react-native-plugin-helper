@@ -1,6 +1,6 @@
 import ComponentButtonCustom from './components/button/ComponentButtonCustom';
 import ComponentFlatListCustom from './components/flatlist/ComponentFlatListCustom';
-import RefreshingControl from './components/refreshingControl/RefreshingControl';
+import RefreshingControlCustom from './components/refreshingControl/RefreshingControlCustom';
 import ComponentTextInputCustom, {
   ValidType,
   PasswordValidType,
@@ -26,7 +26,7 @@ export {
   ComponentButtonCustom,
   ComponentTextInputCustom,
   ComponentFlatListCustom,
-  RefreshingControl,
+  RefreshingControlCustom,
   ValidType,
   PasswordValidType,
   h,

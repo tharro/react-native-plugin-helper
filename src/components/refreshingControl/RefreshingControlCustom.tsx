@@ -11,7 +11,7 @@ interface Props {
   colors?: string[] | undefined;
 }
 
-const RefreshingControl = (props: Props) => {
+const RefreshingControlCustom = (props: Props) => {
   const {
     isRefreshing,
     onRefresh,
@@ -46,4 +46,4 @@ const RefreshingControl = (props: Props) => {
   return refreshingBuilder;
 };
 
-export default RefreshingControl;
+export default RefreshingControlCustom;
