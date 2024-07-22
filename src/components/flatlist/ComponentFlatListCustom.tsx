@@ -5,12 +5,16 @@ import {
   ListRenderItem,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  RefreshControl,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { h } from '../../extensions';
+import ListModel from 'src/models/ListModel';
+import Styles from './styles';
+import RefreshingControl from '../refreshingControl/RefreshingControl';
 
 interface Props<T> {
-  data: T[];
+  data: ListModel<T>;
   renderItem: ListRenderItem<T>;
   flatListProps?: FlatListProps<any>;
   onLoadMore?: () => void;
@@ -22,6 +26,11 @@ interface Props<T> {
   refreshColor: string[];
   refreshTintColor: string;
   refreshing: boolean;
+  errorBuilder: (error: string) => React.ReactElement;
+  emptyBuilder: React.ReactElement;
+  loadingBuilder: React.ReactElement;
+  wrapScrollView?: boolean | undefined;
+  style?: StyleProp<ViewStyle> | undefined;
 }
 
 const ComponentFlatListCustom = <T,>(props: Props<T>) => {
@@ -71,16 +80,61 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
     return props.ActivityIndicator;
   };
 
+  if (props.data?.isLoading) {
+    return props.loadingBuilder;
+  }
+
+  if (
+    props.data?.errorMessage != undefined &&
+    props.data!.errorMessage!.length > 0
+  ) {
+    return (
+      <RefreshingControl
+        wrapScrollView={props.wrapScrollView}
+        style={[Styles.scroll, props.style]}
+        colors={props.refreshColor}
+        isRefreshing={props.refreshing}
+        tintColor={props.refreshTintColor}
+        onRefresh={() => {
+          if (props.onRefresh != undefined) {
+            props.onRefresh!();
+          }
+        }}
+      >
+        {props.errorBuilder(props.data!.errorMessage!)}
+      </RefreshingControl>
+    );
+  }
+
+  if (props.data?.results != undefined && props.data!.results!.length == 0) {
+    return (
+      <RefreshingControl
+        isRefreshing={props.refreshing}
+        wrapScrollView={props.wrapScrollView}
+        colors={props.refreshColor}
+        style={[Styles.scroll, props.style]}
+        tintColor={props.refreshTintColor}
+        onRefresh={() => {
+          if (props.onRefresh != undefined) {
+            props.onRefresh!();
+          }
+        }}
+      >
+        {props.emptyBuilder}
+      </RefreshingControl>
+    );
+  }
+
   return (
     <FlatList
       renderItem={props.renderItem}
-      data={props.data}
+      data={props.data?.results ?? []}
       refreshControl={
         props.onRefresh ? (
-          <RefreshControl
+          <RefreshingControl
             colors={props.refreshColor}
             tintColor={props.refreshTintColor}
-            refreshing={props.refreshing}
+            isRefreshing={props.refreshing}
             onRefresh={props.onRefresh}
           />
         ) : undefined
