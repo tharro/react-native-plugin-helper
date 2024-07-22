@@ -93,7 +93,7 @@ export function isValidPassword(
 /// Output: 2 hours
 export function convertTimeToHourOrDay(
   dateTime: string,
-  format: string = 'dd/mm/yyyy hh:mm:ss'
+  format: string = 'DD/MM/YYYY HH:MM'
 ) {
   try {
     var date = moment(dateTime, format);
