@@ -53,7 +53,7 @@ export const isValidateEmail = (email: string) => {
 
 export const convertUtcToLocalTime = (
   utc: string,
-  format: string = 'dd/mm/yyyy hh:mm'
+  format: string = 'DD/MM/YYYY HH:MM'
 ) => {
   return moment.utc(new Date(utc)).local().format(format);
 };
