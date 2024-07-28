@@ -1,10 +1,17 @@
 import React from 'react';
-import { RefreshControl, ScrollView, StyleProp, ViewStyle } from 'react-native';
+import {
+  RefreshControl,
+  ScrollView,
+  StyleProp,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 interface Props {
   isRefreshing?: boolean | undefined;
   onRefresh: () => void;
   wrapScrollView?: boolean | undefined;
+  scrollStyle?: StyleProp<ViewStyle> | undefined;
   style?: StyleProp<ViewStyle> | undefined;
   children?: React.ReactElement | undefined;
   tintColor?: string | undefined;
@@ -20,6 +27,7 @@ const RefreshingControlCustom = (props: Props) => {
     children,
     tintColor,
     colors,
+    scrollStyle,
   } = props;
 
   const refreshingBuilder = (
@@ -33,13 +41,15 @@ const RefreshingControlCustom = (props: Props) => {
 
   if (wrapScrollView) {
     return (
-      <ScrollView
-        contentContainerStyle={style}
-        showsVerticalScrollIndicator={false}
-        refreshControl={refreshingBuilder}
-      >
-        {children}
-      </ScrollView>
+      <View style={[style, { flex: 1 }]}>
+        <ScrollView
+          contentContainerStyle={scrollStyle}
+          showsVerticalScrollIndicator={false}
+          refreshControl={refreshingBuilder}
+        >
+          {children}
+        </ScrollView>
+      </View>
     );
   }
 
