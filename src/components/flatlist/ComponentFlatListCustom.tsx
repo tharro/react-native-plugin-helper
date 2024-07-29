@@ -31,6 +31,7 @@ interface Props<T> {
   loadingBuilder: React.ReactElement;
   wrapScrollView?: boolean | undefined;
   style?: StyleProp<ViewStyle> | undefined;
+  scrollStyle?: StyleProp<ViewStyle> | undefined;
 }
 
 const ComponentFlatListCustom = <T,>(props: Props<T>) => {
@@ -92,6 +93,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       <RefreshingControl
         wrapScrollView={props.wrapScrollView}
         style={[Styles.scroll, props.style]}
+        scrollStyle={props.scrollStyle}
         colors={props.refreshColor}
         isRefreshing={props.refreshing}
         tintColor={props.refreshTintColor}
@@ -111,6 +113,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       <RefreshingControl
         isRefreshing={props.refreshing}
         wrapScrollView={props.wrapScrollView}
+        scrollStyle={props.scrollStyle}
         colors={props.refreshColor}
         style={[Styles.scroll, props.style]}
         tintColor={props.refreshTintColor}
