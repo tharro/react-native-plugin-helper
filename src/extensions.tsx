@@ -93,6 +93,7 @@ export function isValidPassword(
 /// Output: 2 hours
 export function convertTimeToHourOrDay(
   dateTime: string,
+  shortType: boolean = false,
   format: string = 'DD/MM/YYYY HH:MM'
 ) {
   try {
@@ -105,18 +106,24 @@ export function convertTimeToHourOrDay(
         const minutes = dateNow.diff(date, 'minutes');
         if (minutes === 0) {
           const sec = dateNow.diff(date, 'seconds');
-          return `${sec} second${sec > 1 ? 's' : ''}`;
+          return `${sec}${shortType ? 's' : ' second'}${
+            sec > 1 && !shortType ? 's' : ''
+          }`;
         } else {
-          return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+          return `${minutes}${shortType ? 'm' : ' minute'}${
+            minutes > 1 && !shortType ? 's' : ''
+          }`;
         }
       } else {
-        return `${hours} hour${hours > 1 ? 's' : ''}`;
+        return `${hours}${shortType ? 'm' : ' hour'}${
+          hours > 1 && !shortType ? 's' : ''
+        }`;
       }
     }
     if (day > 7) {
       return moment(date).format(format);
     }
-    return `${day} day${day > 1 ? 's' : ''}`;
+    return `${day}${shortType ? 'd' : ' day'}${day > 1 ? 's' : ''}`;
   } catch (e) {
     return '-:--';
   }
