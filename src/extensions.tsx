@@ -123,7 +123,9 @@ export function convertTimeToHourOrDay(
     if (day > 7) {
       return moment(date).format(format);
     }
-    return `${day}${shortType ? 'd' : ' day'}${day > 1 ? 's' : ''}`;
+    return `${day}${shortType ? 'd' : ' day'}${
+      day > 1 && !shortType ? 's' : ''
+    }`;
   } catch (e) {
     return '-:--';
   }
