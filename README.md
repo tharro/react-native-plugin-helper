@@ -1,5 +1,7 @@
 # react-native-plugin-helper
+
 Plugin for React native
+
 ## Installation
 
 ```sh
@@ -9,7 +11,7 @@ npm install react-native-plugin-helper
 ## Usage
 
 ```js
-import { isValidateEmail } from "react-native-plugin-helper";
+import { isValidateEmail } from 'react-native-plugin-helper';
 
 // ...
 
