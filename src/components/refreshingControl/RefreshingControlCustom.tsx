@@ -43,8 +43,10 @@ const RefreshingControlCustom = (props: Props) => {
     return (
       <View style={[style, { flex: 1 }]}>
         <ScrollView
+          style={scrollStyle}
           contentContainerStyle={scrollStyle}
           showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           refreshControl={refreshingBuilder}
         >
           {children}
