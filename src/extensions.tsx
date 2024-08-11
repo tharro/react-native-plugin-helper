@@ -55,7 +55,11 @@ export const convertUtcToLocalTime = (
   utc: string,
   format: string = 'DD/MM/YYYY HH:mm'
 ) => {
-  return moment.utc(new Date(utc)).local().format(format);
+  var dateUtc = utc;
+  if (!utc.includes('Z')) {
+    dateUtc += 'Z';
+  }
+  return moment.utc(new Date(dateUtc)).local().format(format);
 };
 
 export function isValidToken(expiredToken: number): boolean {
