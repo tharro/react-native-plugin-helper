@@ -32,7 +32,7 @@ interface Props<T> {
   wrapScrollView?: boolean | undefined;
   style?: StyleProp<ViewStyle> | undefined;
   scrollStyle?: StyleProp<ViewStyle> | undefined;
-  ref?: (r: FlatList | null) => void;
+  onRef?: (r: FlatList<T> | null) => void;
 }
 
 const ComponentFlatListCustom = <T,>(props: Props<T>) => {
@@ -154,8 +154,8 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       onScroll={props.onLoadMore ? doLoadMore : undefined}
       {...props.flatListProps}
       ref={(r) => {
-        if (props.ref) {
-          props.ref(r);
+        if (props.onRef) {
+          props.onRef(r);
         }
       }}
     />
