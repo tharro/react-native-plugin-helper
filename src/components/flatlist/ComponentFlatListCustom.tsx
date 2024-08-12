@@ -153,7 +153,11 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       scrollEventThrottle={15}
       onScroll={props.onLoadMore ? doLoadMore : undefined}
       {...props.flatListProps}
-      ref={props.ref}
+      ref={(r) => {
+        if (props.ref) {
+          props.ref(r);
+        }
+      }}
     />
   );
 };
