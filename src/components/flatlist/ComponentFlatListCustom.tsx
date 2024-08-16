@@ -12,6 +12,7 @@ import { h } from '../../extensions';
 import ListModel from 'src/models/ListModel';
 import Styles from './styles';
 import RefreshingControl from '../refreshingControl/RefreshingControlCustom';
+import RefreshingControlCustom from '../refreshingControl/RefreshingControlCustom';
 
 interface Props<T> {
   data: ListModel<T>;
@@ -135,7 +136,8 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       data={props.data?.results ?? []}
       refreshControl={
         props.onRefresh ? (
-          <RefreshingControl
+          <RefreshingControlCustom
+            wrapScrollView={false}
             colors={props.refreshColor}
             tintColor={props.refreshTintColor}
             isRefreshing={props.refreshing}
