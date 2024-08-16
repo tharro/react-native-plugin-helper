@@ -10,7 +10,6 @@ import {
 interface Props {
   isRefreshing?: boolean | undefined;
   onRefresh: () => void;
-  wrapScrollView?: boolean | undefined;
   scrollStyle?: StyleProp<ViewStyle> | undefined;
   style?: StyleProp<ViewStyle> | undefined;
   children?: React.ReactElement | undefined;
@@ -22,7 +21,6 @@ const RefreshingControlCustom = (props: Props) => {
   const {
     isRefreshing,
     onRefresh,
-    wrapScrollView,
     style,
     children,
     tintColor,
@@ -30,31 +28,25 @@ const RefreshingControlCustom = (props: Props) => {
     scrollStyle,
   } = props;
 
-  const refreshingBuilder = (
-    <RefreshControl
-      colors={colors}
-      refreshing={isRefreshing ?? false}
-      onRefresh={onRefresh}
-      tintColor={tintColor}
-    />
+  return (
+    <View style={[style, { flex: 1 }]}>
+      <ScrollView
+        contentContainerStyle={scrollStyle}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            colors={colors}
+            refreshing={isRefreshing ?? false}
+            onRefresh={onRefresh}
+            tintColor={tintColor}
+          />
+        }
+      >
+        {children}
+      </ScrollView>
+    </View>
   );
-
-  if (wrapScrollView) {
-    return (
-      <View style={[style, { flex: 1 }]}>
-        <ScrollView
-          contentContainerStyle={scrollStyle}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          refreshControl={refreshingBuilder}
-        >
-          {children}
-        </ScrollView>
-      </View>
-    );
-  }
-
-  return refreshingBuilder;
 };
 
 export default RefreshingControlCustom;

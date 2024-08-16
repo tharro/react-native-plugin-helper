@@ -7,11 +7,11 @@ import {
   NativeSyntheticEvent,
   StyleProp,
   ViewStyle,
+  RefreshControl,
 } from 'react-native';
 import { h } from '../../extensions';
 import ListModel from 'src/models/ListModel';
 import Styles from './styles';
-import RefreshingControl from '../refreshingControl/RefreshingControlCustom';
 import RefreshingControlCustom from '../refreshingControl/RefreshingControlCustom';
 
 interface Props<T> {
@@ -92,8 +92,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
     props.data!.errorMessage!.length > 0
   ) {
     return (
-      <RefreshingControl
-        wrapScrollView={props.wrapScrollView}
+      <RefreshingControlCustom
         style={[Styles.scroll, props.style]}
         scrollStyle={props.scrollStyle}
         colors={props.refreshColor}
@@ -106,15 +105,14 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
         }}
       >
         {props.errorBuilder(props.data!.errorMessage!)}
-      </RefreshingControl>
+      </RefreshingControlCustom>
     );
   }
 
   if (props.data?.results != undefined && props.data!.results!.length == 0) {
     return (
-      <RefreshingControl
+      <RefreshingControlCustom
         isRefreshing={props.refreshing}
-        wrapScrollView={props.wrapScrollView}
         scrollStyle={props.scrollStyle}
         colors={props.refreshColor}
         style={[Styles.scroll, props.style]}
@@ -126,7 +124,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
         }}
       >
         {props.emptyBuilder}
-      </RefreshingControl>
+      </RefreshingControlCustom>
     );
   }
 
@@ -136,11 +134,10 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
       data={props.data?.results ?? []}
       refreshControl={
         props.onRefresh ? (
-          <RefreshingControlCustom
-            wrapScrollView={false}
+          <RefreshControl
             colors={props.refreshColor}
             tintColor={props.refreshTintColor}
-            isRefreshing={props.refreshing}
+            refreshing={props.refreshing}
             onRefresh={props.onRefresh}
           />
         ) : undefined
