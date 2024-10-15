@@ -130,6 +130,8 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
 
   return (
     <FlatList
+      removeClippedSubviews
+      initialNumToRender={20}
       renderItem={props.renderItem}
       data={props.data?.results ?? []}
       refreshControl={
