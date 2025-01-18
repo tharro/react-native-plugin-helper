@@ -34,7 +34,9 @@ interface Props<T> {
   style?: StyleProp<ViewStyle> | undefined;
   scrollStyle?: StyleProp<ViewStyle> | undefined;
   onRef?: (r: FlatList<T> | null) => void;
-  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onScroll?: (
+    event: NativeSyntheticEvent<NativeScrollEvent>
+  ) => void | undefined;
 }
 
 const ComponentFlatListCustom = <T,>(props: Props<T>) => {
