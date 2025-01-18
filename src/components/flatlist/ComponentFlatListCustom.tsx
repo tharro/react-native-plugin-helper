@@ -52,7 +52,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
 
   const checkBeginScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     setStartOffset(e.nativeEvent.contentOffset.y);
-    if (props.onScroll !== null) {
+    if (props.onScroll !== undefined) {
       props.onScroll!(e);
     }
   };
