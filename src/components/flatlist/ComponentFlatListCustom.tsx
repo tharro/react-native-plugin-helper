@@ -34,6 +34,7 @@ interface Props<T> {
   style?: StyleProp<ViewStyle> | undefined;
   scrollStyle?: StyleProp<ViewStyle> | undefined;
   onRef?: (r: FlatList<T> | null) => void;
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }
 
 const ComponentFlatListCustom = <T,>(props: Props<T>) => {
@@ -49,6 +50,9 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
 
   const checkBeginScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     setStartOffset(e.nativeEvent.contentOffset.y);
+    if (props.onScroll !== null) {
+      props.onScroll!(e);
+    }
   };
 
   const isScrollEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -88,7 +92,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
   }
 
   if (
-    props.data?.errorMessage != undefined &&
+    props.data?.errorMessage !== undefined &&
     props.data!.errorMessage!.length > 0
   ) {
     return (
@@ -99,7 +103,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
         isRefreshing={props.refreshing}
         tintColor={props.refreshTintColor}
         onRefresh={() => {
-          if (props.onRefresh != undefined) {
+          if (props.onRefresh !== undefined) {
             props.onRefresh!();
           }
         }}
@@ -109,7 +113,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
     );
   }
 
-  if (props.data?.results != undefined && props.data!.results!.length == 0) {
+  if (props.data?.results !== undefined && props.data!.results!.length === 0) {
     return (
       <RefreshingControlCustom
         isRefreshing={props.refreshing}
@@ -118,7 +122,7 @@ const ComponentFlatListCustom = <T,>(props: Props<T>) => {
         style={[Styles.scroll, props.style]}
         tintColor={props.refreshTintColor}
         onRefresh={() => {
-          if (props.onRefresh != undefined) {
+          if (props.onRefresh !== undefined) {
             props.onRefresh!();
           }
         }}
